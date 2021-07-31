@@ -67,9 +67,26 @@ class Topologies {
         return topology.components.map(c => c.id)
     }
 
-    // queryDevicesWithNetlistNode(TopologyID, NetlistNodeID) {
+    queryDevicesWithNetlistNode(TopologyID, NetlistNodeID) {
+        const topology = this.currentTopologies.find(t => t.id === TopologyID)
+      
+        if(!topology)
+        {
+            console.log("this topology doesn't exist!");
+            return;
+        }
+        
+        const devices = topology.components.reduce((result, component) => {
+            const idx = Object.values(component.netlist).findIndex(n => n == NetlistNodeID)
+            if(idx !== -1)
+                result.push({id: component.id, terminal: Object.keys(component.netlist)[idx]})
 
-    // }
+            return result
+        }, [])
+
+        return devices
+
+    }
 }
 
 

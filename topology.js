@@ -47,17 +47,25 @@ class Topologies {
 
     }
 
-    // queryTopology() {
+    queryTopologies() {
+        return this.currentTopologies.map(t => t.id)
+    }
 
-    // }
+    deleteTopology(TopologyID) {
+        this.currentTopologies = this.currentTopologies.filter(t => t.id != TopologyID)
+    }
 
-    // deleteTopology() {
-
-    // }
-
-    // queryDevices(TopologyID) {
-
-    // }
+    queryDevices(TopologyID) {
+        const topology = this.currentTopologies.find(t => t.id === TopologyID)
+      
+        if(!topology)
+        {
+            console.log("this topology doesn't exist!");
+            return;
+        }
+      
+        return topology.components.map(c => c.id)
+    }
 
     // queryDevicesWithNetlistNode(TopologyID, NetlistNodeID) {
 

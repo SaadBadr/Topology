@@ -1,0 +1,19 @@
+{
+  "name": "topology",
+  "version": "1.0.0",
+  "description": "Provide the functionality to access, manage and store device topologies",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SaadBadr/Topology.git"
+  },
+  "author": "SaadBadr",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SaadBadr/Topology/issues"
+  },
+  "homepage": "https://github.com/SaadBadr/Topology#readme"
+}

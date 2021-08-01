@@ -5,6 +5,12 @@ class Topologies {
     this.currentTopologies = [];
   }
 
+  /**
+   * Reads a topology from a given JSON file and store it in the memory
+   * @date 2021-08-01
+   * @param {String} fileName
+   * @returns {null}
+   */
   readJSON(fileName) {
     try {
       const topology = fs.readFileSync(fileName);
@@ -17,6 +23,12 @@ class Topologies {
     }
   }
 
+  /**
+   * Write a given topology from the memory to a output.json file
+   * @date 2021-08-01
+   * @param {String} TopologyID
+   * @returns {null}
+   */
   writeJSON(TopologyID) {
     const topology = this.currentTopologies.find((t) => t.id === TopologyID);
 
@@ -34,16 +46,33 @@ class Topologies {
     }
   }
 
+  /**
+   * Query about which topologies are currently in the memory
+   * @date 2021-08-01
+   * @returns {Array} topologies IDs
+   */
   queryTopologies() {
     return this.currentTopologies.map((t) => t.id);
   }
 
+  /**
+   * Delete a given topology from memory
+   * @date 2021-08-01
+   * @param {String} TopologyID
+   * @returns {null}
+   */
   deleteTopology(TopologyID) {
     this.currentTopologies = this.currentTopologies.filter(
       (t) => t.id != TopologyID
     );
   }
 
+  /**
+   * Query about which devices are in a given topology
+   * @date 2021-08-01
+   * @param {String} TopologyID
+   * @returns {Array} devices IDs in the topology
+   */
   queryDevices(TopologyID) {
     const topology = this.currentTopologies.find((t) => t.id === TopologyID);
 
@@ -55,6 +84,13 @@ class Topologies {
     return topology.components.map((c) => c.id);
   }
 
+  /**
+   * Query about which devices are connected to a given netlist node in a given topology
+   * @date 2021-08-01
+   * @param {String} TopologyID
+   * @param {String} NetlistNodeID
+   * @returns {Array} Objects in returned array: {String} device id, {String} connected terminal
+   */
   queryDevicesWithNetlistNode(TopologyID, NetlistNodeID) {
     const topology = this.currentTopologies.find((t) => t.id === TopologyID);
 

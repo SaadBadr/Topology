@@ -16,7 +16,7 @@ Provide the functionality to access, manage and store device topologies.
 | Function | Description | Params | return |
 | ------ | ------ | ------ | ------ |
 | readJSON(FileName) | adding new topology from json file | FileName: json file input path| - |
-| writeJSON(topologyID) | write topology to output.json | topologyID: id of the topology to be written| - |
+| writeJSON(topologyID) | write topology to out-id.json | topologyID: id of the topology to be written| - |
 | queryTopologies() | query current topologies in the memory | - | Array of toplogies IDs |
 | deleteTopology(topologyID) | delete topology from the memory | topologyID: id of the topology to be deleted | - |
 | queryDevices(topologyID) | query devices of a topology | topologyID: id of the wanted topology | Array of devices IDs |
@@ -39,7 +39,7 @@ const topologies = require("./topology.js");
 topologies.readJSON(fileName);
 ```
 
-2- write topology to output.json
+2- write topology to out-id.json
 ```sh
 topologies.writeJSON(topologyID);
 ```

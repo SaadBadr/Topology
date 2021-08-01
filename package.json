@@ -4,7 +4,7 @@
   "description": "Provide the functionality to access, manage and store device topologies",
   "main": "example.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/SaadBadr/Topology/issues"
   },
-  "homepage": "https://github.com/SaadBadr/Topology#readme"
+  "homepage": "https://github.com/SaadBadr/Topology#readme",
+  "devDependencies": {
+    "jest": "^27.0.6"
+  }
 }

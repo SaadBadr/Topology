@@ -24,7 +24,7 @@ class Topologies {
   }
 
   /**
-   * Write a given topology from the memory to a output.json file
+   * Write a given topology from the memory to a out-id.json file
    * @date 2021-08-01
    * @param {String} TopologyID
    * @returns {null}
@@ -38,7 +38,7 @@ class Topologies {
     }
 
     try {
-      fs.writeFileSync("outpus.json", JSON.stringify(topology));
+      fs.writeFileSync(`out-${topology.id}.json`, JSON.stringify(topology));
       console.log("Topology write success");
     } catch (error) {
       console.log("Topology write failed");

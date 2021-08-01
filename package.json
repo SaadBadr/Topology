@@ -2,7 +2,7 @@
   "name": "topology",
   "version": "1.0.0",
   "description": "Provide the functionality to access, manage and store device topologies",
-  "main": "index.js",
+  "main": "example.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

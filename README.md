@@ -63,5 +63,5 @@ topologies.queryDevices(topologyID);
 ```sh
 topologies.queryDevicesWithNetlistNode(topologyID, netlistNodeID);
 ```
-
-##### For more examples, check example.js
+---
+> Note: for more examples, check `example.js`

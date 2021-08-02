@@ -1,3 +1,4 @@
+const { Error } = require("console");
 const fs = require("fs");
 
 class Topologies {
@@ -9,41 +10,46 @@ class Topologies {
    * Reads a topology from a given JSON file and store it in the memory
    * @date 2021-08-01
    * @param {String} fileName
-   * @returns {null}
+   * @returns {boolean}
    */
   readJSON(fileName) {
     try {
       const topology = fs.readFileSync(fileName);
       const topologyOBJ = JSON.parse(topology);
+      if (this.currentTopologies.find((t) => t.id === topologyOBJ.id)) {
+        throw "Topology id already exists in memory!";
+      }
       this.currentTopologies.push(topologyOBJ);
       console.log("Topology read success");
     } catch (error) {
       console.log("Topology read failed");
       console.log(error);
+      return false;
     }
+    return true;
   }
 
   /**
    * Write a given topology from the memory to a out-id.json file
    * @date 2021-08-01
    * @param {String} TopologyID
-   * @returns {null}
+   * @returns {boolean}
    */
   writeJSON(TopologyID) {
     const topology = this.currentTopologies.find((t) => t.id === TopologyID);
 
-    if (!topology) {
-      console.log("this topology doesn't exist!");
-      return;
-    }
-
     try {
+      if (!topology) {
+        throw "Topology not exist in memory!";
+      }
       fs.writeFileSync(`out-${topology.id}.json`, JSON.stringify(topology));
       console.log("Topology write success");
     } catch (error) {
       console.log("Topology write failed");
-      console.log(error);
+      console.log(error.message);
+      return false;
     }
+    return true;
   }
 
   /**
@@ -78,7 +84,7 @@ class Topologies {
 
     if (!topology) {
       console.log("this topology doesn't exist!");
-      return;
+      return false;
     }
 
     return topology.components.map((c) => c.id);
@@ -96,7 +102,7 @@ class Topologies {
 
     if (!topology) {
       console.log("this topology doesn't exist!");
-      return;
+      return false;
     }
 
     const devices = topology.components.reduce((result, component) => {

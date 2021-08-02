@@ -15,12 +15,12 @@ Provide the functionality to access, manage and store device topologies.
 
 | Function | Description | Params | return |
 | ------ | ------ | ------ | ------ |
-| readJSON(FileName) | adding new topology from json file | FileName: json file input path| - |
-| writeJSON(topologyID) | write topology to out-id.json | topologyID: id of the topology to be written| - |
+| readJSON(FileName) | adding new topology from json file | FileName: json file input path| true / false |
+| writeJSON(topologyID) | write topology to out-id.json | topologyID: id of the topology to be written| true / false |
 | queryTopologies() | query current topologies in the memory | - | Array of toplogies IDs |
 | deleteTopology(topologyID) | delete topology from the memory | topologyID: id of the topology to be deleted | - |
-| queryDevices(topologyID) | query devices of a topology | topologyID: id of the wanted topology | Array of devices IDs |
-| queryDevicesWithNetlistNode(topologyID, netlistNodeID) | query devices of a topology with a netlist node | topologyID: id of the wanted topology, netlistNodeID: id of the wanted netlist node | Array of Objects: [ {id: deviceID, terminal: deviceConnectedTerminal} ] |
+| queryDevices(topologyID) | query devices of a topology | topologyID: id of the wanted topology | Array of devices IDs / false|
+| queryDevicesWithNetlistNode(topologyID, netlistNodeID) | query devices of a topology with a netlist node | topologyID: id of the wanted topology, netlistNodeID: id of the wanted netlist node | Array of Objects: [ {id: deviceID, terminal: deviceConnectedTerminal} ] / false|
 
 ## Usage
 
@@ -63,5 +63,16 @@ topologies.queryDevices(topologyID);
 ```sh
 topologies.queryDevicesWithNetlistNode(topologyID, netlistNodeID);
 ```
+---
+
+## Run unit testing
+```sh
+npm run test
+```
+> Note: `Jest` is a dependence to run the unit testing, make sure to install dependencies before running unit testing
+```sh
+npm i
+```
+
 ---
 > Note: for more examples, check `example.js`
